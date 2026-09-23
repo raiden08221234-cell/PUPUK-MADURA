@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PT. DAMAI JAYA ASIA - Pupuk Madura</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Konfigurasi Tema Warna -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: "#00AEEF" /* Cyan/Biru Muda */,
+              accent: "#F7931E" /* Oranye/Kuning */,
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #00aeef;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #008cba;
+      }
+
+      .transition-all {
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header (Konsep Navigasi E-commerce V1) -->
+    <header class="bg-brand text-white sticky top-0 z-40 shadow-md">
+      <!-- Top bar -->
+      <div
+        class="container mx-auto px-4 py-2 flex justify-between text-xs opacity-90 hidden md:flex"
+      >
+        <div>
+          <span class="hover:underline cursor-pointer">Jual di Damai Jaya</span>
+          | <span class="hover:underline cursor-pointer">Ikuti Kami</span>
+        </div>
+        <div>
+          <span class="hover:underline cursor-pointer"
+            ><i class="far fa-bell"></i> Notifikasi</span
+          >
+          |
+          <span class="hover:underline cursor-pointer"
+            ><i class="far fa-question-circle"></i> Bantuan</span
+          >
+          |
+          <span class="font-bold">Bahasa Indonesia</span>
+        </div>
+      </div>
+
+      <!-- Main Search Bar Area -->
+      <div
+        class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4"
+      >
+        <!-- Logo Perusahaan -->
+        <div class="flex items-center gap-3 w-full md:w-1/4 cursor-pointer">
+          <i class="fas fa-leaf text-4xl text-accent drop-shadow-md"></i>
+          <div class="font-bold text-xl leading-tight tracking-wide">
+            PT. DAMAI<br />JAYA ASIA
+          </div>
+        </div>
+
+        <!-- Search Input -->
+        <div class="flex-grow w-full relative">
+          <input
+            type="text"
+            placeholder="Cari Pupuk Madura, Urea, atau Alat Tani..."
+            class="w-full py-3 px-4 rounded-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent shadow-inner"
+          />
+          <button
+            class="absolute right-1 top-1 bottom-1 bg-brand text-white px-6 rounded-sm hover:bg-blue-500 transition-all flex items-center justify-center"
+          >
+            <i class="fas fa-search text-lg"></i>
+          </button>
+        </div>
+
+        <!-- Cart & Account Area (V2 Functionality) -->
+        <div
+          class="flex items-center gap-6 w-full md:w-1/4 md:justify-end justify-between mt-2 md:mt-0"
+        >
+          <!-- Keranjang Belanja dengan onclick -->
+          <div
+            class="relative cursor-pointer group hover:text-gray-200 transition-all"
+            onclick="toggleCart()"
+          >
+            <i class="fas fa-shopping-cart text-3xl"></i>
+            <span
+              id="cart-count"
+              class="absolute -top-2 -right-3 bg-accent text-white text-xs font-bold px-2 py-0.5 rounded-full border-2 border-brand transition-all duration-300"
+              >0</span
+            >
+          </div>
+          <!-- Login/Daftar -->
+          <div class="flex gap-4 font-semibold text-sm">
+            <a href="#" class="hover:text-gray-200">Daftar</a>
+            <span>|</span>
+            <a href="#" class="hover:text-gray-200">Login</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories / Kategori Pencarian -->
+      <div
+        class="container mx-auto px-4 pb-3 flex gap-6 text-sm overflow-x-auto whitespace-nowrap scrollbar-hide"
+      >
+        <a href="#" class="hover:text-gray-200 font-medium">Pupuk Urea</a>
+        <a href="#" class="hover:text-gray-200 font-medium">Pupuk NPK</a>
+        <a href="#" class="hover:text-gray-200 font-medium">Pupuk Cair</a>
+        <a href="#" class="hover:text-gray-200 font-medium">Pestisida</a>
+        <a href="#" class="hover:text-gray-200 font-medium">Alat Tani</a>
+        <a href="#" class="hover:text-gray-200 font-medium">Grosir 1 Ton</a>
+      </div>
+    </header>
+
+    <!-- Banner / Hero Section (V1) -->
+    <div class="bg-blue-100">
+      <div class="container mx-auto px-4 py-6 md:py-8">
+        <div
+          class="bg-gradient-to-r from-brand to-cyan-500 rounded-xl overflow-hidden shadow-lg flex flex-col md:flex-row relative"
+        >
+          <!-- Dekorasi Background -->
+          <div
+            class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"
+          ></div>
+
+          <div
+            class="p-8 md:p-12 md:w-3/5 flex flex-col justify-center text-white z-10"
+          >
+            <h1
+              class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-md text-accent uppercase tracking-wider"
+            >
+              PUPUK MADURA
+            </h1>
+            <p class="text-xl md:text-2xl font-semibold mb-8 italic">
+              "Saatnya Coba, Buktikan Sendiri Hasilnya."
+            </p>
+            <button
+              onclick="
+                document
+                  .getElementById('product-section')
+                  .scrollIntoView({ behavior: 'smooth' })
+              "
+              class="bg-accent hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded shadow-md w-max transition-all transform hover:scale-105 flex items-center gap-2"
+            >
+              <i class="fas fa-shopping-bag"></i> Belanja Sekarang
+            </button>
+          </div>
+
+          <!-- Gambar Dummy Banner -->
+          <div
+            class="md:w-2/5 bg-gray-200 flex items-center justify-center relative overflow-hidden py-10 md:py-0"
+          >
+            <div
+              class="w-48 h-48 bg-white rounded-full flex items-center justify-center shadow-xl z-10 border-4 border-accent"
+            >
+              <i class="fas fa-seedling text-8xl text-brand drop-shadow-lg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etalase Produk (Data V1 + JS Render V2) -->
+    <main class="container mx-auto px-4 py-8" id="product-section">
+      <div
+        class="flex items-center justify-between mb-6 border-b-2 border-brand pb-2"
+      >
+        <h3
+          class="text-xl md:text-2xl font-bold text-gray-800 uppercase flex items-center gap-2"
+        >
+          <i class="fas fa-fire text-accent"></i> Produk Terlaris
+        </h3>
+        <a
+          href="#"
+          class="text-brand font-semibold hover:underline flex items-center gap-1"
+        >
+          Lihat Semua <i class="fas fa-chevron-right text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Wadah Grid yang akan diisi oleh JavaScript -->
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4"
+        id="product-grid"
+      >
+        <!-- Isi dirender JS -->
+      </div>
+    </main>
+
+    <!-- Footer E-commerce (V1) -->
+    <footer class="bg-white border-t-4 border-brand mt-12 pt-10">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm mb-10">
+          <div>
+            <h5 class="font-bold text-gray-800 mb-4 text-base">
+              LAYANAN PELANGGAN
+            </h5>
+            <ul class="text-gray-600 space-y-2">
+              <li>
+                <a href="#" class="hover:text-brand transition-all">Bantuan</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-brand transition-all"
+                  >Metode Pembayaran</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-brand transition-all"
+                  >Lacak Pesanan</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-brand transition-all"
+                  >Gratis Ongkir</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-bold text-gray-800 mb-4 text-base">TENTANG KAMI</h5>
+            <ul class="text-gray-600 space-y-2">
+              <li>
+                <a href="#" class="hover:text-brand transition-all"
+                  >Tentang PT. Damai Jaya Asia</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-brand transition-all">Karir</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-brand transition-all"
+                  >Mitra Distributor</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-bold text-gray-800 mb-4 text-base">PEMBAYARAN</h5>
+            <div class="flex gap-2 flex-wrap">
+              <div
+                class="bg-gray-50 border border-gray-200 p-2 rounded shadow-sm text-center w-16"
+              >
+                <i
+                  class="fas fa-money-bill-wave text-green-600 text-xl block mb-1"
+                ></i
+                ><span class="text-[10px] font-bold">COD</span>
+              </div>
+              <div
+                class="bg-gray-50 border border-gray-200 p-2 rounded shadow-sm text-center w-16"
+              >
+                <i
+                  class="fas fa-university text-blue-600 text-xl block mb-1"
+                ></i
+                ><span class="text-[10px] font-bold">Transfer</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h5 class="font-bold text-gray-800 mb-4 text-base">IKUTI KAMI</h5>
+            <div class="flex gap-4 text-2xl text-gray-600">
+              <a href="#" class="hover:text-blue-600"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" class="hover:text-pink-600"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-gray-100 py-4 text-center text-xs text-gray-500 border-t border-gray-200"
+      >
+        <p>&copy; 2026 PT. Damai Jaya Asia. Hak Cipta Dilindungi.</p>
+      </div>
+    </footer>
+
+    <!-- Modal Keranjang Belanja & Checkout (V2) -->
+    <div
+      id="cart-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden opacity-0 transition-opacity duration-300 flex justify-end"
+    >
+      <div
+        class="bg-white w-full md:w-[450px] h-full shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300"
+        id="cart-sidebar"
+      >
+        <div
+          class="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50"
+        >
+          <h2 class="text-lg font-bold flex items-center gap-2">
+            <i class="fas fa-shopping-cart text-brand"></i> Keranjang Belanja
+          </h2>
+          <button
+            onclick="toggleCart()"
+            class="text-gray-500 hover:text-red-500 text-xl"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="flex-grow p-4 overflow-y-auto" id="cart-items-container">
+          <!-- Item dirender JS -->
+        </div>
+
+        <div class="p-4 border-t border-gray-200 bg-gray-50">
+          <div class="mb-4">
+            <label class="block text-sm font-semibold text-gray-700 mb-1"
+              >Nama Lengkap</label
+            >
+            <input
+              type="text"
+              id="cust-name"
+              placeholder="Masukkan nama Anda"
+              class="w-full p-2 border border-gray-300 rounded text-sm focus:outline-none focus:border-brand"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-semibold text-gray-700 mb-1"
+              >Alamat Pengiriman</label
+            >
+            <textarea
+              id="cust-address"
+              rows="2"
+              placeholder="Masukkan alamat lengkap"
+              class="w-full p-2 border border-gray-300 rounded text-sm focus:outline-none focus:border-brand"
+            ></textarea>
+          </div>
+          <div class="flex justify-between items-center font-bold text-lg mb-4">
+            <span>Total:</span>
+            <span id="cart-total" class="text-brand">Rp 0</span>
+          </div>
+          <button
+            onclick="checkoutWhatsApp()"
+            class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg flex justify-center items-center gap-2 transition-all shadow-md"
+          >
+            <i class="fab fa-whatsapp text-xl"></i> Beli via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification (V2) -->
+    <div
+      id="toast"
+      class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full shadow-2xl transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-3"
+    >
+      <i class="fas fa-check-circle text-green-400"></i>
+      <span class="font-medium text-sm" id="toast-msg"
+        >Ditambahkan ke keranjang!</span
+      >
+    </div>
+
+    <!-- Script Utama -->
+    <script>
+      // Data Produk Gabungan (Gambar V2 + Detail Harga/Rating V1)
+      const products = [
+        {
+          id: 1,
+          name: "Pupuk Madura Granul Premium - Kemasan 50kg",
+          price: 315000,
+          oldPrice: 350000,
+          tag: "-10%",
+          tagColor: "bg-accent",
+          rating: 4.5,
+          sold: "10RB+",
+          img: "https://images.unsplash.com/photo-1628352081506-83c43123ed6d?q=80&w=400&auto=format&fit=crop",
+        },
+        {
+          id: 2,
+          name: "Pupuk Cair Madura Ekstra Pertumbuhan - 1 Liter",
+          price: 85000,
+          oldPrice: null,
+          tag: null,
+          tagColor: null,
+          rating: 5.0,
+          sold: "5.2RB",
+          img: "https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?q=80&w=400&auto=format&fit=crop",
+        },
+        {
+          id: 3,
+          name: "Pupuk Madura Khusus Padi & Jagung - 5kg",
+          price: 45000,
+          oldPrice: null,
+          tag: null,
+          tagColor: null,
+          rating: 4.0,
+          sold: "2.1RB",
+          img: "https://images.unsplash.com/photo-1595000578673-958b43440ea3?q=80&w=400&auto=format&fit=crop",
+        },
+        {
+          id: 4,
+          name: "Paket Kemitraan Pupuk Madura - 1 Ton",
+          price: 5800000,
+          oldPrice: null,
+          tag: "Grosir",
+          tagColor: "bg-red-500",
+          rating: 5.0,
+          sold: "150",
+          img: "https://images.unsplash.com/photo-1586771107445-d3af2f567409?q=80&w=400&auto=format&fit=crop",
+        },
+        {
+          id: 5,
+          name: "Pupuk Madura Sampel Uji Coba - 1kg",
+          price: 14250,
+          oldPrice: 15000,
+          tag: "-5%",
+          tagColor: "bg-accent",
+          rating: 4.5,
+          sold: "8RB+",
+          img: "https://images.unsplash.com/photo-1416879598008-5d2dd701ed64?q=80&w=400&auto=format&fit=crop",
+        },
+      ];
+
+      let cart = [];
+      const WA_NUMBER = "6282252295577";
+
+      // Format Rupiah
+      const formatRp = (angka) =>
+        new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+        }).format(angka);
+
+      // Render Produk dengan Desain V1
+      function renderProducts() {
+        const grid = document.getElementById("product-grid");
+        grid.innerHTML = products
+          .map((p) => {
+            // Menyiapkan Tag & Harga Coret
+            let tagHTML = p.tag
+              ? `<div class="absolute top-0 right-0 ${p.tagColor} text-white text-xs font-bold px-2 py-1 rounded-bl-lg z-10 shadow">${p.tag}</div>`
+              : "";
+            let oldPriceHTML = p.oldPrice
+              ? `<div class="flex items-center gap-2 mb-0.5"><span class="text-xs text-gray-400 line-through">${formatRp(p.oldPrice)}</span></div>`
+              : '<div class="h-5"></div>';
+
+            // Menyiapkan Bintang Rating
+            let stars = "";
+            for (let i = 1; i <= 5; i++) {
+              if (i <= Math.floor(p.rating))
+                stars += '<i class="fas fa-star"></i>';
+              else if (i === Math.ceil(p.rating) && p.rating % 1 !== 0)
+                stars += '<i class="fas fa-star-half-alt"></i>';
+              else stars += '<i class="far fa-star"></i>';
+            }
+
+            return `
+                <div class="bg-white rounded border border-gray-200 hover:border-brand hover:shadow-xl transition-all flex flex-col group relative overflow-hidden">
+                    ${tagHTML}
+                    <div class="h-40 bg-gray-100 flex items-center justify-center relative overflow-hidden">
+                        <img src="${p.img}" alt="${p.name}" class="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-3 flex flex-col flex-grow">
+                        <h4 class="text-sm font-medium text-gray-800 line-clamp-2 mb-2 leading-tight h-10">${p.name}</h4>
+                        <div class="mt-auto">
+                            ${oldPriceHTML}
+                            <div class="text-brand font-bold text-lg mb-2">${formatRp(p.price)}</div>
+                            <div class="flex items-center justify-between text-[10px] md:text-xs text-gray-500 mb-3">
+                                <div class="flex text-accent">${stars}</div>
+                                <span>${p.sold} Terjual</span>
+                            </div>
+                            <button onclick="addToCart(${p.id})" class="w-full bg-white border border-brand text-brand hover:bg-brand hover:text-white py-2 rounded text-sm font-semibold transition-all">Tambah Keranjang</button>
+                        </div>
+                    </div>
+                </div>`;
+          })
+          .join("");
+      }
+
+      // Tambah ke Keranjang
+      function addToCart(id) {
+        const product = products.find((p) => p.id === id);
+        const existingItem = cart.find((item) => item.id === id);
+
+        if (existingItem) {
+          existingItem.qty++;
+        } else {
+          cart.push({ ...product, qty: 1 });
+        }
+
+        // Animasi icon keranjang
+        const countEl = document.getElementById("cart-count");
+        countEl.classList.add("scale-150");
+        setTimeout(() => countEl.classList.remove("scale-150"), 200);
+
+        updateCartUI();
+        showToast("Berhasil ditambahkan ke keranjang!");
+      }
+
+      // Ubah Kuantitas di Keranjang
+      function changeQty(id, delta) {
+        const item = cart.find((i) => i.id === id);
+        if (item) {
+          item.qty += delta;
+          if (item.qty <= 0) cart = cart.filter((i) => i.id !== id);
+          updateCartUI();
+        }
+      }
+
+      // Update UI Keranjang
+      function updateCartUI() {
+        const count = cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById("cart-count").innerText = count;
+
+        const container = document.getElementById("cart-items-container");
+        let total = 0;
+
+        if (cart.length === 0) {
+          container.innerHTML = `<div class="text-center text-gray-400 mt-10"><i class="fas fa-box-open text-4xl mb-3"></i><p>Keranjang masih kosong</p></div>`;
+        } else {
+          container.innerHTML = cart
+            .map((item) => {
+              const subtotal = item.price * item.qty;
+              total += subtotal;
+              return `
+                    <div class="flex gap-3 mb-4 border-b border-gray-100 pb-4">
+                        <img src="${item.img}" class="w-16 h-16 object-cover rounded border">
+                        <div class="flex-grow">
+                            <h5 class="text-xs font-bold text-gray-700 leading-tight mb-1">${item.name}</h5>
+                            <div class="text-brand text-sm font-bold mb-2">${formatRp(item.price)}</div>
+                            <div class="flex items-center gap-3">
+                                <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 bg-gray-200 rounded flex justify-center items-center text-xs hover:bg-gray-300">-</button>
+                                <span class="text-sm font-bold">${item.qty}</span>
+                                <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 bg-gray-200 rounded flex justify-center items-center text-xs hover:bg-gray-300">+</button>
+                            </div>
+                        </div>
+                    </div>`;
+            })
+            .join("");
+        }
+        document.getElementById("cart-total").innerText = formatRp(total);
+      }
+
+      // Modal Buka/Tutup
+      function toggleCart() {
+        const modal = document.getElementById("cart-modal");
+        const sidebar = document.getElementById("cart-sidebar");
+
+        if (modal.classList.contains("hidden")) {
+          modal.classList.remove("hidden");
+          setTimeout(() => {
+            modal.classList.remove("opacity-0");
+            sidebar.classList.remove("translate-x-full");
+          }, 10);
+        } else {
+          modal.classList.add("opacity-0");
+          sidebar.classList.add("translate-x-full");
+          setTimeout(() => {
+            modal.classList.add("hidden");
+          }, 300);
+        }
+      }
+
+      // Checkout via WhatsApp
+      function checkoutWhatsApp() {
+        if (cart.length === 0) return alert("Keranjang belanja masih kosong!");
+
+        const nama = document.getElementById("cust-name").value.trim();
+        const alamat = document.getElementById("cust-address").value.trim();
+
+        if (!nama || !alamat)
+          return alert(
+            "Mohon lengkapi Nama dan Alamat Pengiriman terlebih dahulu.",
+          );
+
+        let message = `*HALO ADMIN PT. DAMAI JAYA ASIA*%0A%0ASaya ingin memesan produk Pupuk Madura.%0A%0A*DETAIL PEMESAN:*%0A👤 Nama: ${nama}%0A📍 Alamat: ${alamat}%0A%0A*DAFTAR PESANAN:*%0A`;
+
+        let total = 0;
+        cart.forEach((item, index) => {
+          const sub = item.price * item.qty;
+          total += sub;
+          message += `${index + 1}. ${item.name}%0A   ${item.qty} x ${formatRp(item.price)} = *${formatRp(sub)}*%0A`;
+        });
+
+        message += `%0A*TOTAL BELANJA: ${formatRp(total)}*%0A%0AMohon informasi ongkos kirim dan rekening pembayaran. Terima kasih!`;
+        window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, "_blank");
+      }
+
+      // Notifikasi Toast
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        document.getElementById("toast-msg").innerText = msg;
+        toast.classList.remove("opacity-0", "translate-y-4");
+        setTimeout(() => toast.classList.add("opacity-0"), 2000);
+      }
+
+      // Inisialisasi awal
+      renderProducts();
+      updateCartUI();
+    </script>
+  </body>
+</html>
